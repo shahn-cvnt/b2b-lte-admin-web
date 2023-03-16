@@ -5,7 +5,13 @@ function Menu({ menu }) {
     <div>
       <ul className="text-sl no-scrollbar relative -mx-4 flex flex-nowrap overflow-x-scroll font-medium sm:-mx-6 lg:-mx-8">
         {menu.map((item, index) => (
-          <MenuItem name={item.name} path={item.path} subMenu={item.children} disabled={item.disabled} key={index} />
+          <MenuItem
+            name={item.name}
+            path={item.path}
+            subMenu={item.children}
+            disabled={item.disabled}
+            key={index}
+          />
         ))}
       </ul>
     </div>
