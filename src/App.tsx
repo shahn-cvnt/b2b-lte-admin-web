@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route, Navigate, Outlet } from "react-router-dom";
+import Header from "./components/header/Header";
+
+import './css/index.css';
+
+// <Header>
+// <Header.Title title={{"문정 스마트 빌 2차"}}>
+// <Header.Menu menu={[''..''..''..]}>
+// <Header.Profile profile={{icon: name.. }}>
+// </Header>
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header>
+      </Header>
     </div>
   );
 }
