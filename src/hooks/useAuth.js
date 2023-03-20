@@ -4,8 +4,7 @@ import axios from "axios";
 import { useLocalStorage } from "./useLocalStroage";
 
 function useAuth(initialValue) {
-  const [storedUserId, setStoredUserId] = useLocalStorage("cvnt_current_user_id");
-  const [storedToken, setStoredToken] = useLocalStorage("cvnt_current_access_token");
+  const [storedUser, setStoredUser] = useLocalStorage("cvnt_current_user");
   const [user, setUser] = useState(initialValue);
 
   const login = async (userId, password) => {
@@ -15,15 +14,15 @@ function useAuth(initialValue) {
     });
 
     if (response.data && response.data.code === 200) {
-      setStoredUserId(userId);
-      setStoredToken(response.data.result);
 
       setUser({
         id: userId,
         token: response.data.result,
       });
 
-      return response.data.result;
+      setStoredUser(user);
+
+      return user;
     } else {
       throw new Error("login failed");
     }
@@ -31,8 +30,7 @@ function useAuth(initialValue) {
 
   const logout = () => {
     setUser(null);
-    setStoredUserId("");
-    setStoredToken("");
+    setStoredUser(null);
   };
 
   return { user, login, logout };

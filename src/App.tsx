@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Outlet,
+  Navigate,
   createBrowserRouter,
   RouterProvider,
   useRoutes,
@@ -12,8 +13,14 @@ import "./css/index.css";
 
 import Header from "./components/header/Header";
 import Home from "./pages/Home";
+import Login from "./pages/login/Login";
 import DeviceStatus from "./pages/device/DeviceStatus";
-import defaultUser from "./images/defaultUser.svg";
+
+import { AuthProvider, useAuthContext } from "./hooks/useAuthContext";
+import { useAuth } from "./hooks/useAuth";
+import { useLocalStorage } from "./hooks/useLocalStroage";
+
+import defaultUser from "./images/ic_user_default.svg";
 
 const menu = [
   {
@@ -48,47 +55,36 @@ const menu = [
 ];
 
 const ProtectedLayout = () => {
-  // const { user }: any = useAuthContext();
+  const { user }: any = useAuthContext();
 
-  // if (!user) {
-  //   return <Navigate to="/login" />;
-  // }
+  if (!user) {
+    return <Navigate to="/login" replace={true}/>;
+  }
 
   return <Outlet />;
 };
 
-// {
-//   path?: string;
-//   index?: boolean;
-//   children?: React.ReactNode;
-//   caseSensitive?: boolean;
-//   id?: string;
-//   loader?: LoaderFunction;
-//   action?: ActionFunction;
-//   element?: React.ReactNode | null;
-//   Component?: React.ComponentType | null;
-//   errorElement?: React.ReactNode | null;
-//   ErrorBoundary?: React.ComponentType | null;
-//   handle?: RouteObject["handle"];
-//   shouldRevalidate?: ShouldRevalidateFunction;
-//   lazy?: LazyRouteFunction<RouteObject>;
-// },
 
 function App() {
+  const [ storedUser ] = useLocalStorage("cvnt_current_user");
+
+  console.log(storedUser);
+
   return (
-    <>
+    <AuthProvider value={useAuth(storedUser)}>
       <Header>
         <Header.Title title={"문정 어쩌구 2차"} />
         <Header.Menu menu={menu} />
-        <Header.Profile name={"관리자"} image={defaultUser} />
+        { storedUser && <Header.Profile name={storedUser.id} image={defaultUser} /> }
       </Header>
       <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route element={<ProtectedLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/device" element={<ProtectedLayout />}>
-          <Route path="status" element={<DeviceStatus />} />
+        <Route path="/device/status" element={<DeviceStatus />} />
         </Route>
       </Routes>
-    </>
+    </AuthProvider>
   );
 }
 

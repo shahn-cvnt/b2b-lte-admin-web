@@ -49,6 +49,9 @@ module.exports = {
         '8xl': '88rem',
         '9xl': '96rem',
       },
+      maxHeight: {
+        '2xl': '42rem'
+      },
       zIndex: {
         60: '60',
       },
