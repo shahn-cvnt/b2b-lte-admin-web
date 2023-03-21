@@ -1,6 +1,9 @@
 function Home() {
-    return <div>{"Home"}</div>;
-  }
-  
-  export default Home;
-  
+  return (
+    <main>
+      <div>{"Home"}</div>
+    </main>
+  );
+}
+
+export default Home;

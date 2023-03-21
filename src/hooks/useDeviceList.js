@@ -8,7 +8,7 @@ function useDeviceList() {
     const [totalCount, setTotalCount] = useState();
     const [totalPage, setTotalPage] = useState();
 
-    const update = async (page = 0) => {
+    const update = async (page = 0, data) => {
         const response = await axios(`/api/v2/nms/monitor/device_search`, {
             method: 'post',
             headers: {
@@ -16,7 +16,7 @@ function useDeviceList() {
                 'Content-Type': 'application/json'
             },
             data: {
-                page: page
+                page, ...data
             }
         });
         // const response = await axios(`/api/v1/device/status?page=${page}`, {

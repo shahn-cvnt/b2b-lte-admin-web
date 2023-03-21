@@ -8,21 +8,21 @@ function useAuth(initialValue) {
   const [user, setUser] = useState(initialValue);
 
   const login = async (userId, password) => {
-    const response = await axios.post("/api/v1/account/login", {
+    const response = await axios.post("/api/v2/nms/account/login", {
       userId,
       password,
     });
 
-    if (response.data && response.data.code === 200) {
-
-      setUser({
+    console.log('response : ', response.data);
+    const result = response.data;
+    if (!result.error) {
+      let data = {
         id: userId,
-        token: response.data.result,
-      });
-
-      setStoredUser(user);
-
-      return user;
+        token: result.data,
+      }
+      setUser(data);
+      setStoredUser(data);
+      return data;
     } else {
       throw new Error("login failed");
     }

@@ -45,6 +45,15 @@ module.exports = {
         72: '18rem',
         80: '20rem',
       },
+      minHeight: {
+        36: '9rem',
+        40: '10rem',
+        44: '11rem',
+        56: '14rem',
+        60: '15rem',
+        72: '18rem',
+        80: '20rem',
+      },
       maxWidth: {
         '8xl': '88rem',
         '9xl': '96rem',

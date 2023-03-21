@@ -1,26 +1,47 @@
 import { useEffect, useState } from "react";
 
-function Pagination({ totalPage, initCurrentPage, handleClickPage }) {
-  const [currentPage, setCurrentPage] = useState(initCurrentPage);
-  const visibleCount = 20;
+const getCurrentPages = (totalPage, currentPage, visibleCount) => {
+  let arr = [];
+  let startPage = visibleCount * Math.floor(currentPage / visibleCount);
 
-  function getCurrentPages() {
-    let currentPages = [];
-    let startPage = visibleCount * Math.floor(currentPage / visibleCount);
-
-    for (let i = 0; i < visibleCount; i++) {
-        let page = startPage + i
-      if (page < totalPage) {
-        currentPages.push(page);
-      }
+  for (let i = 0; i < visibleCount; i++) {
+    let page = startPage + i;
+    if (page < totalPage) {
+      arr.push(page);
     }
-
-    return currentPages;
   }
+  // setCurrentPages(arr)
+  return arr;
+}
+
+function Pagination({ totalPage, currentPage, handleClickPage }) {
+  const visibleCount = 20;
+  const [currentPages, setCurrentPages] = useState([]);
+
+
+  const handleClickPrev = () => {
+    handleClickPage(Math.max(0,(currentPages[0] - 1)));
+  };
+
+  const handleClickNext = () => {
+      handleClickPage(Math.min((totalPage - 1), (currentPages[0] + visibleCount)));
+  };
+
+  // 매뉴얼 로컬 백업
 
   useEffect(() => {
-  }, []);
+    let arr = [];
+    let startPage = visibleCount * Math.floor(currentPage / visibleCount);
+  
+    for (let i = 0; i < visibleCount; i++) {
+      let page = startPage + i;
+      if (page < totalPage) {
+        arr.push(page);
+      }
+    }
+    setCurrentPages(arr);
 
+  }, [totalPage, currentPage]);
 
   return (
     <div className="flex justify-center">
@@ -34,12 +55,7 @@ function Pagination({ totalPage, initCurrentPage, handleClickPage }) {
                 ? "text-slate-300"
                 : "text-slate-600 hover:text-slate-400"
             }`}
-            onClick={() => {
-              if (currentPage > 0) {
-                handleClickPage(currentPage - 1);
-                setCurrentPage(currentPage - 1);
-              }
-            }}
+            onClick={handleClickPrev}
           >
             <span className="sr-only">Previous</span>
             <wbr />
@@ -49,20 +65,20 @@ function Pagination({ totalPage, initCurrentPage, handleClickPage }) {
           </a>
         </div>
         <ul className="inline-flex -space-x-px text-xs font-medium shadow-sm">
-          {getCurrentPages().map((e, index) => {
+          {currentPages.map((e, index) => {
             return (
               <li key={index}>
                 <a
-                  className={`inline-flex items-center justify-center border border-slate-200 bg-white px-2.5 py-1.5 leading-5 text-slate-600 hover:bg-indigo-500 hover:text-white
+                  className={`inline-flex items-center justify-center border border-slate-200 bg-white px-2.5 py-1.5 leading-5 hover:bg-indigo-500 hover:text-white
                           ${
                             currentPage === e
-                              ? "font-bold text-indigo-600"
+                              ? "font-bold text-indigo-700"
                               : "text-slate-600"
                           }`}
                   href="#"
                   onClick={() => {
                     handleClickPage(e);
-                    setCurrentPage(e);
+                    // setCurrentPage(e);
                   }}
                 >
                   {e + 1}
@@ -76,16 +92,11 @@ function Pagination({ totalPage, initCurrentPage, handleClickPage }) {
             href="#"
             className={`inline-flex items-center justify-center rounded border border-slate-200 bg-white px-2 py-1.5 leading-5
             ${
-              currentPage >= (totalPage - 1)
+              currentPage >= totalPage - 1
                 ? "text-slate-300"
                 : "text-slate-600 hover:text-slate-400"
             }`}
-            onClick={() => {
-              if (currentPage < (totalPage - 1)) {
-                handleClickPage(currentPage + 1);
-                setCurrentPage(currentPage + 1);
-              }
-            }}
+            onClick={handleClickNext}
           >
             <span className="sr-only">Next</span>
             <wbr />

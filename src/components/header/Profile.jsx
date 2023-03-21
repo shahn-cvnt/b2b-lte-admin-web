@@ -2,7 +2,7 @@ import Dropdown from "./DropdownProfile";
 function Profile({name, image}) {
   return (
     <div>
-      <button
+      {/* <button
         className="group inline-flex items-center justify-center"
         aria-haspopup="true"
       >
@@ -17,7 +17,7 @@ function Profile({name, image}) {
             <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
           </svg>
         </div>
-      </button>
+      </button> */}
       <Dropdown align="right" name="관리자"></Dropdown>
     </div>
   );

@@ -58,30 +58,32 @@ const ProtectedLayout = () => {
   const { user }: any = useAuthContext();
 
   if (!user) {
-    return <Navigate to="/login" replace={true}/>;
+    return <Navigate to="/login" replace={true} />;
   }
 
-  return <Outlet />;
-};
-
-
-function App() {
-  const [ storedUser ] = useLocalStorage("cvnt_current_user");
-
-  console.log(storedUser);
-
   return (
-    <AuthProvider value={useAuth(storedUser)}>
+    <>
       <Header>
         <Header.Title title={"문정 어쩌구 2차"} />
         <Header.Menu menu={menu} />
-        { storedUser && <Header.Profile name={storedUser.id} image={defaultUser} /> }
+        {user && <Header.Profile name={user.id} image={defaultUser} />}
       </Header>
+      <Outlet />
+    </>
+  );
+};
+
+function App() {
+  const [storedUser] = useLocalStorage("cvnt_current_user");
+  // const auth = useAuth(storedUser);
+
+  return (
+    <AuthProvider value={useAuth(storedUser)}>
       <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route element={<ProtectedLayout />}>
-        <Route path="/" element={<Home />} />
-        <Route path="/device/status" element={<DeviceStatus />} />
+        <Route path="/login" element={<Login />} />
+        <Route element={<ProtectedLayout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/device/status" element={<DeviceStatus />} />
         </Route>
       </Routes>
     </AuthProvider>
