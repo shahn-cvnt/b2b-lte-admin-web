@@ -16,9 +16,9 @@ const DeviceTableHeader = () => {
     <>
       <BasicTable.TableHeader name="시리얼" />
       <BasicTable.TableHeader name="모델" />
-      <BasicTable.TableHeader name="MAC주소" />
-      <BasicTable.TableHeader name="SW버전" />
-      <BasicTable.TableHeader name="IoT계정" />
+      <BasicTable.TableHeader name="MAC 주소" />
+      <BasicTable.TableHeader name="SW 버전" />
+      <BasicTable.TableHeader name="IoT 계정" />
       <BasicTable.TableHeader name="SIP" />
       <BasicTable.TableHeader name="접속상태" />
       <BasicTable.TableHeader name="갱신시간" />
@@ -106,12 +106,7 @@ const category = [
     id: 2,
     name: "sn",
     period: "시리얼",
-  },
-  // {
-  //   id: 3,
-  //   name: 'online',
-  //   period: "온라인",
-  // },
+  }
 ];
 
 function DeviceStatus() {
@@ -126,7 +121,7 @@ function DeviceStatus() {
   };
 
   const refresh = () => {
-    if (searchOption.name) {
+    if (Object.keys(searchOption)) {
       setCurrentPage(0);
       setSearchOption({});
       update();

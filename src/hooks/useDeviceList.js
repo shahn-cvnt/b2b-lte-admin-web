@@ -19,17 +19,11 @@ function useDeviceList() {
                 page, ...data
             }
         });
-        // const response = await axios(`/api/v1/device/status?page=${page}`, {
-        //     headers: {
-        //         Authorization: `Bearer ${user.token}`
-        //     }
-        // });
 
-        const result = response.data;
-        if (result.data) {
-            setDeviceList(result.data.devices);
-            setTotalCount(result.data.totalCount);
-            setTotalPage(result.data.totalPage);
+        if (!response.errorCode) {
+            setDeviceList(response.data.devices);
+            setTotalCount(response.data.totalCount);
+            setTotalPage(response.data.totalPage);
         }
         
     }
