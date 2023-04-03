@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-function ComplexDongList() {
+function ComplexAptGroup() {
+  const navigate = useNavigate();
   const [sync, setSync] = useState(false);
 
   return (
-    <main class="sidebar-expanded bg-slate-100 font-inter text-slate-600 antialiased">
+    <main className="sidebar-expanded bg-slate-100 font-inter text-slate-600 antialiased">
       <div className="mx-auto w-full max-w-9xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Page header */}
         <div className="mb-8">
@@ -75,9 +77,12 @@ function ComplexDongList() {
                             {/* Right side */}
                             <a
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
-                              href="#0"
+                              href=""
+                              onClick={() => {
+                                navigate('/complex/donginfo');
+                              }}
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -106,7 +111,7 @@ function ComplexDongList() {
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                               href="#0"
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -135,7 +140,7 @@ function ComplexDongList() {
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                               href="#0"
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -164,7 +169,7 @@ function ComplexDongList() {
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                               href="#0"
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -195,7 +200,7 @@ function ComplexDongList() {
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                               href="#0"
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -224,7 +229,7 @@ function ComplexDongList() {
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                               href="#0"
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -253,7 +258,7 @@ function ComplexDongList() {
                               className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                               href="#0"
                             >
-                              상세 보기 -&gt;
+                              세대 정보 -&gt;
                             </a>
                           </div>
                         </footer>
@@ -270,4 +275,4 @@ function ComplexDongList() {
   );
 }
 
-export default ComplexDongList;
+export default ComplexAptGroup;

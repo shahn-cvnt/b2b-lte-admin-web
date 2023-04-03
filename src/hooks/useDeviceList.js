@@ -9,6 +9,7 @@ function useDeviceList() {
     const [totalPage, setTotalPage] = useState();
 
     const update = async (page = 0, data) => {
+        // TODO: refactoring
         const response = await axios(`/api/v2/nms/monitor/device_search`, {
             method: 'post',
             headers: {

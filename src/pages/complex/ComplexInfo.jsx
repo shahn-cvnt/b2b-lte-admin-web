@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useComplex } from "../../hooks/useComplex";
 
 function ComplexInfo() {
+  const { complex } = useComplex();
   const [sync, setSync] = useState(false);
+  useEffect(() => {
+    console.log('ComplexInfo : ' , complex);
+  })
 
   return (
-    <main class="font-inter antialiased bg-slate-100 text-slate-600 sidebar-expanded">
+    <main className="font-inter antialiased bg-slate-100 text-slate-600 sidebar-expanded">
       <div className="mx-auto w-full max-w-9xl px-4 py-8 sm:px-6 lg:px-8">
         {/* Page header */}
         <div className="mb-8">

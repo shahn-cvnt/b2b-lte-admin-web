@@ -69,7 +69,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "server": "npx json-server mocks/json-server-db.json --port 4000 --routes mocks/routes.json"
   },
   "eslintConfig": {
     "extends": [
@@ -154,5 +155,6 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000"
 }

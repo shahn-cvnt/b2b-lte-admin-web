@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Routes,
   Route,
@@ -25,16 +25,19 @@ import ComplexInfo from "./pages/complex/ComplexInfo";
 
 import ComplexStruct from "./pages/complex_temp/ComplexStruct";
 import ComplexSetting from "./pages/complex_temp/ComplexSetting";
-import EntranceGroup from "./pages/entrance_temp/EntranceGroup"
-import EntranceDevice from "./pages/entrance_temp/EntranceDevice"
+import EntranceGroup from "./pages/entrance_temp/EntranceGroup";
+import EntranceDevice from "./pages/entrance_temp/EntranceDevice";
 import EntranceHistory from "./pages/entrance_temp/EntranceHistory";
 import EntranceRFCard from "./pages/entrance_temp/EntranceRFCard";
-import ComplexDongList from "./pages/complex/ComplexDongList";
-import ComplexDongInfo from "./pages/complex/ComplexDongInfo";
+import ComplexAptGroup from "./pages/complex/ComplexAptGroup";
+import ComplexApt from "./pages/complex/ComplexApt";
+import ComplexOffice from "./pages/complex/ComplexOffice";
+import Sidebar from "./components/sidebar/Sidebar";
 
 const ProtectedLayout = () => {
   const navigate = useNavigate();
   const { user }: any = useAuthContext();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (!user) {
     return <Navigate to="/login" replace={true} />;
@@ -42,26 +45,24 @@ const ProtectedLayout = () => {
 
   return (
     <>
-    <Header>
-        <Header.Title title={"문정 스마트빌 2차"} />
-        <div>
+      {false &&  <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />}
+        <Header>
+          <Header.Title title={"문정 스마트빌 2차"} />
           <button
             className="btn-xs border-slate-200 bg-white pl-2 text-slate-600 shadow-sm hover:border-slate-300"
             onClick={(e) => {
-              navigate('/complex/setting');
+              navigate("/complex/setting");
             }}
           >
             <span className="text-xs text-blue-500">단지설정</span>
           </button>
-        </div>
-        <Header.Menu menu={routes[0].children?.filter((e) => (e.name))} />
-        {user && <Header.Profile name={user.id} image={defaultUser} />}
-      </Header>
-      <Outlet />
-    </>
+          <Header.Menu menu={routes[0].children?.filter((e) => e.name)} />
+          {user && <Header.Profile name={user.id} image={defaultUser} />}
+        </Header>
+        <Outlet />
+      </>
   );
 };
-
 
 const routes = [
   {
@@ -73,105 +74,104 @@ const routes = [
         element: <Home />,
       },
       {
-        path: '/complex/setting',
-        element: <ComplexSetting/>
+        path: "/complex/setting",
+        element: <ComplexSetting />,
       },
       {
-        name: '(그룹 이름)',
+        name: "(그룹 이름)",
         path: "/complex",
         children: [
           {
-            name: '입주자 관리',
-            path: 'struct',
-            element: <ComplexStruct/>
+            name: "입주자 관리",
+            path: "struct",
+            element: <ComplexStruct />,
           },
           {
-            name: '방문자 관리',
-            path: 'struct',
-            element: <ComplexStruct/>
-          }
-        ]
-      },
-      {
-        name: '단지 관리',
-        path: "/complex",
-        children: [
-          {
-            name: '단지 정보',
-            path: "info",
-            element: <ComplexInfo/>
+            name: "방문자 관리",
+            path: "struct",
+            element: <ComplexStruct />,
           },
-          {
-            name: '동/세대 관리*',
-            path: 'donglist',
-            element: <ComplexDongList/>
-          },
-          {
-            name: '동 상세(임시)*',
-            path: 'donginfo',
-            element: <ComplexDongInfo/>
-          },
-          {
-            name: '관리/경비실 관리*',
-            path: 'struct',
-            element: <ComplexStruct/>
-          }
         ],
       },
       {
-        name: '기기 관리',
+        name: "단지 관리",
+        path: "/complex",
+        children: [
+          {
+            name: "단지 정보",
+            path: "info",
+            element: <ComplexInfo />,
+          },
+          {
+            name: "동/세대 관리*",
+            path: "donglist",
+            element: <ComplexAptGroup />,
+          },
+          {
+            path: "donginfo",
+            element: <ComplexApt />,
+          },
+          {
+            name: "관리/경비실 관리*",
+            path: "guard",
+            element: <ComplexOffice />,
+          },
+        ],
+      },
+      {
+        name: "기기 관리",
         path: "/device",
         element: <DeviceStatus />,
         children: [
           {
-            name: '상태 정보',
+            name: "상태 정보",
             path: "status",
-            element: <DeviceStatus />
+            element: <DeviceStatus />,
           },
           {
-            name: '펌웨어 등록',
+            name: "펌웨어 등록",
             path: "firmware",
-            element: <DeviceStatus />
+            element: <DeviceStatus />,
           },
           {
-            name: '기기 제어 로그*',
+            name: "기기 제어 로그*",
             path: "firmware",
-            element: <DeviceStatus />
+            element: <DeviceStatus />,
           },
         ],
       },
       {
-        name: '출입 관리',
+        name: "출입 관리",
         path: "/entrance",
         children: [
           {
-            name: '출입 그룹',
+            name: "출입 그룹",
             path: "group",
-            element: <EntranceGroup />
+            element: <EntranceGroup />,
           },
           {
-            name: '출입 기기',
+            name: "출입 기기",
             path: "device",
-            element: <EntranceDevice />
+            element: <EntranceDevice />,
           },
           {
-            name: '출입 이력',
+            name: "출입 이력",
             path: "history",
-            element: <EntranceHistory />
+            element: <EntranceHistory />,
           },
           {
-            name: 'RF 카드',
+            name: "RF 카드",
             path: "rfcard",
-            element: <EntranceRFCard />
+            element: <EntranceRFCard />,
           },
         ],
       },
       {
-        name: '통화 관리',
+        name: "통화 관리",
         path: "/call",
         children: [
           {
-            name: '통화 이력',
+            name: "통화 이력",
             path: "",
           },
         ],
@@ -182,7 +182,7 @@ const routes = [
     path: "/login",
     element: <Login />,
   },
-]
+];
 const router = createBrowserRouter(routes);
 
 export default function App() {

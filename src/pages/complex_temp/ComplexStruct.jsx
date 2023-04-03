@@ -1,7 +1,4 @@
 import { useState } from "react";
-import ComplexStructEdit from "./ComplexStructEdit";
-import HouseholdsInfo from "./HouseholdsInfo";
-import GuardInfo from "./GuardInfo"
 
 function ComplexStruct() {
   const [isEditShow, setIsEditShow] = useState(false);
@@ -44,9 +41,6 @@ function ComplexStruct() {
           <button className="btn border bg-emerald-100" onClick={() => setIsHouseholdsShow(!isHouseholdsShow)}>상세</button>
         </li>
       </ul>
-      {isEditShow && <ComplexStructEdit handleClick={() => setIsEditShow(false)} />}
-      {isGuardShow && <GuardInfo />}
-      {isHouseholdsShow && <HouseholdsInfo />}
       </div>
       <hr />
     </div>

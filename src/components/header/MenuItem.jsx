@@ -28,8 +28,9 @@ function MenuItem({ name, path, subMenu, disabled }) {
             </div>
           </NavLink>
           {subMenu &&
-            subMenu.map((sub) => 
+            subMenu.map((sub, index) => 
               (<NavLink
+              key={index}
                 to={path + "/" +sub.path}
                 className={({ isActive }) =>
                   `block whitespace-nowrap ${
