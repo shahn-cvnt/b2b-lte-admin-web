@@ -9,8 +9,6 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import "./css/index.css";
-
 import Header from "./components/header/Header";
 import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
@@ -23,8 +21,7 @@ import { useLocalStorage } from "./hooks/useLocalStroage";
 import defaultUser from "./images/ic_user_default.svg";
 import ComplexInfo from "./pages/complex/ComplexInfo";
 
-import ComplexStruct from "./pages/complex_temp/ComplexStruct";
-import ComplexSetting from "./pages/complex_temp/ComplexSetting";
+import ComplexSetting from "./pages/complex/ComplexSetting";
 import EntranceGroup from "./pages/entrance_temp/EntranceGroup";
 import EntranceDevice from "./pages/entrance_temp/EntranceDevice";
 import EntranceHistory from "./pages/entrance_temp/EntranceHistory";
@@ -84,12 +81,12 @@ const routes = [
           {
             name: "입주자 관리",
             path: "struct",
-            element: <ComplexStruct />,
+            element: <Home />,
           },
           {
             name: "방문자 관리",
             path: "struct",
-            element: <ComplexStruct />,
+            element: <Home />,
           },
         ],
       },

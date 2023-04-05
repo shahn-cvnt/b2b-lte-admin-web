@@ -1,32 +1,17 @@
 import { useEffect, useState } from "react";
 import { useAuthContext } from "./useAuthContext";
-import axios from "axios";
+// import axios from "axios";
+import { axios } from "../apis/httpClient";
+
 
 function useComplex() {
-    const { user }= useAuthContext();
-    const [complex, setComplex] = useState();
+  const { user } = useAuthContext();
+  const [complexData, setComplexData] = useState();
 
-    const update = async () => {
-        // TODO: refactoring (단지 정보)
-        const response = await axios(`/api/v2/nms/complex/info`, {
-            method: 'get',
-            headers: {
-                'Authorization': `Bearer ${user.token}`,
-                'Content-Type': 'application/json'
-            }
-        });
+  useEffect(() => {
+  }, []);
 
-        if (!response.errorCode) {
-            setComplex(response.data);
-        }
-    }
-
-    useEffect(() => {
-        update();
-    }, []);
-
-    return { complex }
-
+  return { complexData };
 }
 
-export { useComplex }
+export { useComplex };
