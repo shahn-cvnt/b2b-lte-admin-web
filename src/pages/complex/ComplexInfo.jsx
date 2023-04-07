@@ -120,7 +120,7 @@ function ComplexInfo() {
                     미세먼지
                   </h2>
                   <div className="text-lg">
-                    매우 좋음
+                    매우 좋음 (관측 지점 : 서울)
                   </div>
                   {/* <div className="mt-5">
                     <button className="btn border-slate-200 text-indigo-500 shadow-sm">

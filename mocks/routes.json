@@ -1,3 +1,4 @@
 {
-    "/api/v2/nms/*": "/$1"
+    "/api/v2/nms/complex/hodetail/:id": "/hodetail",
+    "/api/v2/nms/complex/*": "/$1"
 }

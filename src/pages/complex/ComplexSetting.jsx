@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useComplexSetting } from "../../hooks/useComplexSetting";
+import { useNavigate } from "react-router-dom";
 
 function ComplexSetting() {
+  const navigate = useNavigate();
   const { complexList } = useComplexSetting();
   const [isOpenAddComplex, setIsOpenAddComplex] = useState(false);
 
@@ -61,7 +63,9 @@ function ComplexSetting() {
             <div className="flex items-end justify-end py-3">
               <button
                 className="btn-sm border-rose-400 border-slate-200 px-4 shadow-sm hover:text-rose-800"
-                onClick={() => {}}
+                onClick={() => {
+                  navigate('/', {replace: true});
+                }}
               >
                 변경
               </button>

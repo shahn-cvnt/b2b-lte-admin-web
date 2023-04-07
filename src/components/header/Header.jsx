@@ -1,6 +1,7 @@
 import Title from "./Title";
 import Menu from "./Menu";
 import Profile from "./Profile";
+import SettingButton from "./SettingButton";
 
 function Header({ children }) {
   return (
@@ -18,6 +19,7 @@ function Header({ children }) {
 Header.Title = Title;
 Header.Menu = Menu;
 Header.Profile = Profile;
+Header.SettingButton = SettingButton;
 
 export default Header;
 

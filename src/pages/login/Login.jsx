@@ -1,17 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = useAuthContext();
-
+  const { user, login } = useAuthContext();
   const [loginInfo, setLoginInfo] = useState({
     userId: "",
     password: "",
   });
-
   const { userId, password } = loginInfo;
+
+  useEffect(() => {
+    if (user) {
+      navigate("/", { replace: true });
+    } else {
+      navigate("/login", { replace: true });
+    }
+  }, [user]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,10 +28,10 @@ function Login() {
     });
   };
 
-  const handleLogin = async () => {
+  const handleClickLogin = async () => {
     try {
       await login(loginInfo.userId, loginInfo.password);
-      navigate("/device/status", { replace: true });
+      // navigate("/device/status", { replace: true });
     } catch (e) {
       // TODO: Error
     }
@@ -68,7 +74,7 @@ function Login() {
           <div className="mt-6 flex items-center justify-end">
             <button
               className="btn ml-3 bg-blue-500 text-white hover:bg-blue-600"
-              onClick={handleLogin}
+              onClick={handleClickLogin}
             >
               로그인
             </button>

@@ -1,11 +1,102 @@
 {
-  "complex": [
-    {"id": "info", "profile":"image", "name": "문정 스마트빌 2차", "address": "서울특별시 송파구 송파대로 155 6층", "finedust": "매우 나쁨"},
-    {"id": "dong", "list":[
-      {"dong": "101", "hoNum": 41},
-      {"dong": "102", "hoNum": 42},
-      {"dong": "103", "hoNum": 43},
-      {"dong": "104", "hoNum": 44}
-    ]}
-  ]
+  "info": {
+    "profile": "image",
+    "name": "문정 스마트빌 2차",
+    "address": "서울특별시 송파구 송파대로 155 6층",
+    "finedust": "매우 나쁨"
+  },
+  "complex_list": [
+    { "name": "동탄역 유림 노르웨이 숲 아파트", "code": "CODE1" },
+    { "name": "동탄역 유림 노르웨이 숲 오피스텔", "code": "CODE1" },
+    { "name": "대림 인천계양더프리미어", "code": "CODE1" },
+    { "name": "수원 하늘채 더퍼스트 1단지", "code": "CODE1" },
+    { "name": "수원 하늘채 더퍼스트 2단지", "code": "CODE1" },
+    { "name": "세종시 4-2 코오롱 하늘채센트레빌", "code": "CODE1" },
+    { "name": "언주역 노블루체", "code": "CODE1" },
+    { "name": "여의도 노블루체", "code": "CODE1" },
+    { "name": "전주 우아한시티", "code": "CODE1" },
+    { "name": "반포 래미안 퍼스티지", "code": "CODE1" },
+    { "name": "광주 수완 더벨류 디프리마", "code": "CODE1" },
+    { "name": "전남 영광 세진더이룸", "code": "CODE1" },
+    { "name": "중산매트로 하늘채", "code": "CODE1" },
+    { "name": "세종 한신더휴 리저브(6블럭)", "code": "CODE1" },
+    { "name": "세종 한신더휴 리저브(5블럭)", "code": "CODE1" },
+    { "name": "화순 삼일 파라뷰 에듀시티", "code": "CODE1" },
+    { "name": "더 헤븐 아일랜드 리조트", "code": "CODE1" },
+    { "name": "용평 아폴리스", "code": "CODE1" }
+  ],
+  "dong": {
+    "list": [
+      {
+        "dong": 101,
+        "aptNum": 41
+      },
+      {
+        "dong": 102,
+        "aptNum": 41
+      },
+      {
+        "dong": 103,
+        "aptNum": 41
+      },
+      {
+        "dong": 104,
+        "aptNum": 41
+      },
+      {
+        "dong": 105,
+        "aptNum": 41
+      }
+    ]
+  },
+  "office": {
+    "list": [
+      {
+        "name": "관리실",
+        "apt": [101, 102]
+      },
+      {
+        "name": "101동, 102동 경비실",
+        "apt": [101, 102]
+      },
+      {
+        "name": "103동, 104동 경비실",
+        "apt": [103, 104]
+      }
+    ]
+  },
+  "dongdetail": [
+    {
+      "id": 101,
+      "floor": 20,
+      "ho": 4
+    },
+    {
+      "floor": 21,
+      "ho": 4,
+      "id": 102
+    },
+    {
+      "id": 103,
+      "floor": 10,
+      "ho": 4
+    },
+    {
+      "id": 104,
+      "floor": 8,
+      "ho": 4
+    },
+    {
+      "id": 105,
+      "floor": 6,
+      "ho": 4
+    }
+  ],
+  "hodetail": {
+    "id": 101,
+    "dong": 102,
+    "ho": 101,
+    "sip": "sip id",
+    "user_list": ["user1", "user2", "user3"]
+  }
 }
