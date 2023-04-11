@@ -63,6 +63,7 @@ function ComplexAptGroup() {
                                     className="text-sm font-medium text-indigo-500 hover:text-indigo-600"
                                     href=""
                                     onClick={() => {
+                                      console.log('complex/donginfo/'+ e.dong);
                                       navigate("/complex/donginfo", {
                                         state: {
                                           "dong": e.dong

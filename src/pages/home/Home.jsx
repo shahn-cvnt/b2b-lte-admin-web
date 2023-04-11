@@ -7,10 +7,9 @@ function Home() {
       {/* Cards */}
       <div className="grid grid-cols-12 gap-6">
         {/* Card (Recent Activity) */}
-        <DashboardCard10 />
+        {/* <DashboardCard10 /> */}
         {/* Card (Income/Expenses) */}
-        <DashboardCard11 />
-        
+        {/* <DashboardCard11 /> */}
       </div>
     </div>
   </main>

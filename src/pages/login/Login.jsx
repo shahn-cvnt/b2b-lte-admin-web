@@ -14,8 +14,6 @@ function Login() {
   useEffect(() => {
     if (user) {
       navigate("/", { replace: true });
-    } else {
-      navigate("/login", { replace: true });
     }
   }, [user]);
 

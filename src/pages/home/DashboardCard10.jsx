@@ -8,8 +8,6 @@ function DashboardCard10() {
       </header>
       <div className="p-3">
 
-        {/* Card content */}
-        {/* "Today" group */}
         <div>
           <header className="text-xs uppercase text-slate-400 bg-slate-50 rounded-sm font-semibold p-2">Today</header>
           <ul className="my-1">
@@ -63,7 +61,6 @@ function DashboardCard10() {
             </li>
           </ul>
         </div>
-        {/* "Yesterday" group */}
         <div>
           <header className="text-xs uppercase text-slate-400 bg-slate-50 rounded-sm font-semibold p-2">Yesterday</header>
           <ul className="my-1">

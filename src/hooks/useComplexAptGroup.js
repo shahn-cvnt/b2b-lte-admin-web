@@ -18,6 +18,8 @@ function useComplexAptGroup() {
   
       if (!response.errorCode) {
         setAptGroup(response.data.list);
+      } else {
+        throw new Error();
       }
     } catch (e) {
       console.error(e?.code)

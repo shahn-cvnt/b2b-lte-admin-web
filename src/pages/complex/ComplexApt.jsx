@@ -3,7 +3,7 @@ import { useComplexApt } from "../../hooks/useComplexApt";
 import { useLocation } from "react-router-dom";
 
 function ComplexApt() {
-  const [sync, setSync] = useState(false);
+  console.log('ComplexApt');
   const location = useLocation();
   const { apt, update, getHo } = useComplexApt(location.state.dong);
   const [hoData, setHoData] = useState();
@@ -49,9 +49,9 @@ function ComplexApt() {
       </div>
     );
   };
-  const TableBody = () => {};
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+  }, []);
 
   return (
     <main className="sidebar-expanded bg-slate-100 font-inter text-slate-600 antialiased">

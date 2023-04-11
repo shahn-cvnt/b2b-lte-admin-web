@@ -15,6 +15,8 @@ import ComplexOffice from "../pages/complex/ComplexOffice";
 
 import ProtectedLayout from "../components/layout/ProtectedLayout"
 
+import { USER_ROLE_PRIORITY } from "../constants";
+
 // 메뉴 탭에 추가 할 페이지 목록
 const childrenRoutes = [
   {
@@ -26,8 +28,9 @@ const childrenRoutes = [
     element: <ComplexSetting />,
   },
   {
-    name: "(그룹 이름)",
+    name: "사용자 관리",
     path: "/complex",
+    role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
     children: [
       {
         name: "입주자 관리",
@@ -51,8 +54,9 @@ const childrenRoutes = [
         element: <ComplexInfo />,
       },
       {
-        name: "동/세대 관리*",
+        name: "동/세대 관리",
         path: "donglist",
+        role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
         element: <ComplexAptGroup />,
       },
       {
@@ -60,8 +64,9 @@ const childrenRoutes = [
         element: <ComplexApt />,
       },
       {
-        name: "관리/경비실 관리*",
+        name: "관리/경비실 관리",
         path: "guard",
+        role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
         element: <ComplexOffice />,
       },
     ],
@@ -74,16 +79,19 @@ const childrenRoutes = [
       {
         name: "상태 정보",
         path: "status",
+        role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
         element: <DeviceStatus />,
       },
       {
         name: "펌웨어 등록",
         path: "firmware",
+        role: USER_ROLE_PRIORITY.ROLE_ADMIN,
         element: <DeviceStatus />,
       },
       {
-        name: "기기 제어 로그*",
+        name: "기기 제어 로그",
         path: "firmware",
+        role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
         element: <DeviceStatus />,
       },
     ],

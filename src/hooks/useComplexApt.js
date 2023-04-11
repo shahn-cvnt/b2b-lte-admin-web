@@ -13,8 +13,7 @@ function useComplexApt(dong) {
         {
           method: "get",
           headers: {
-            Authorization: `Bearer ${user.token}`,
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`
           },
         }
       );
@@ -34,8 +33,7 @@ function useComplexApt(dong) {
         {
           method: "patch",
           headers: {
-            Authorization: `Bearer ${user.token}`,
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`
           },
           data: data,
         }
@@ -57,8 +55,7 @@ function useComplexApt(dong) {
         {
           method: "get",
           headers: {
-            Authorization: `Bearer ${user.token}`,
-            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`
           }
         }
       );

@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { AuthProvider } from "./hooks/useAuthContext";
 import { useAuth } from "./hooks/useAuth";
-import { useLocalStorage } from "./hooks/useLocalStroage";
 import { router } from "./router";
 
 export default function App() {

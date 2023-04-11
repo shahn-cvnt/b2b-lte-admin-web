@@ -69,8 +69,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "server": "npx json-server --watch mocks/json-server-db.json --port 4000 --routes mocks/routes.json"
+    "server": "npx json-server --watch mocks/json-server-db.json --port 4000 --routes mocks/routes.json",
+    "test": "node scripts/test.js"
   },
   "eslintConfig": {
     "extends": [
