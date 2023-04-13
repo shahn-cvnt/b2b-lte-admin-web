@@ -2,10 +2,12 @@
   "token_login": {
     "role" : "ROLE_ADMIN"
   },
-  "info": {
+  "complex_info": {
+    "name": "문정 스마트빌 10차",
     "profile": "image",
-    "name": "문정 스마트빌 2차",
-    "address": "서울특별시 송파구 송파대로 155 6층",
+    "postcode": "05855",
+    "address1": "서울특별시 송파구 송파대로 155",
+    "address2": "6층 씨브이네트",
     "finedust": "매우 나쁨"
   },
   "complex_list": [

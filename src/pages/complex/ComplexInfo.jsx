@@ -1,24 +1,11 @@
-import { useEffect, useState } from "react";
-import { useComplex } from "../../hooks/useComplex";
+import { useComplexInfo } from "../../hooks/useComplex";
 
 function ComplexInfo() {
-  const { complex } = useComplex();
-  const [sync, setSync] = useState(false);
-  useEffect(() => {
-    console.log('ComplexInfo : ' , complex);
-  })
+  const { complexInfo } = useComplexInfo();
 
   return (
-    <main className="font-inter antialiased bg-slate-100 text-slate-600 sidebar-expanded">
+    <main className="sidebar-expanded bg-slate-100 font-inter text-slate-600 antialiased">
       <div className="mx-auto w-full max-w-9xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Page header */}
-        <div className="mb-8">
-          {/* Title */}
-          <h1 className="text-2xl font-bold text-slate-800 md:text-3xl">
-            단지 정보
-          </h1>
-        </div>
-
         {/* Content */}
         <div className="mb-8 rounded-sm bg-white shadow-lg">
           <div className="flex flex-col md:-mr-px md:flex-row">
@@ -26,11 +13,13 @@ function ComplexInfo() {
             <div className="grow">
               {/* Panel body */}
               <div className="space-y-6 p-6">
-                {/* <h2 className="mb-5 text-2xl font-bold text-slate-800">
-                  단지 로고
-                </h2> */}
+                <header className="mb-6 flex">
+                  <h2 className="flex-1 text-xl font-bold leading-snug text-slate-800">
+                    단지 정보
+                  </h2>
+                </header>
                 {/* Picture */}
-                <section>
+                {/* <section>
                   <div className="flex items-center">
                     <div className="mr-4">
                       <img
@@ -45,13 +34,15 @@ function ComplexInfo() {
                       Change
                     </button>
                   </div>
-                </section>
+                </section> */}
                 {/* Business Profile */}
                 <section>
-                  <h2 className="mb-1 text-xl font-bold leading-snug text-slate-800">
+                  <h2 className="text-md mb-1 font-bold leading-snug text-slate-800">
                     단지명
                   </h2>
-                  <div className="text-lg">문정 스마트빌 2차</div>
+                  <div className="text-lg">
+                    {complexInfo.name}
+                  </div>
                   {/* <div className="mt-5 space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-4">
                     <div className="sm:w-1/3">
                       <label
@@ -96,32 +87,35 @@ function ComplexInfo() {
                 </section>
                 {/* Email */}
                 <section>
-                  <h2 className="mb-1 text-xl font-bold leading-snug text-slate-800">
-                    주소
+                  <h2 className="text-md mb-1  font-bold leading-snug text-slate-800">
+                    우편번호
                   </h2>
-                  <div className="text-lg">
-                    서울특별시 송파구 송파대로 155 6층
-                  </div>
-                  {/* <div className="mt-5 flex flex-wrap">
-                    <div className="mr-2">
-                      <label className="sr-only" htmlFor="email">
-                        Business email
-                      </label>
-                      <input id="email" className="form-input" type="email" />
+                  <div className="text-lg">{complexInfo.postcode}</div>
+                </section>
+                <section>
+                  <div className="mt-5 space-y-4 sm:flex sm:items-center sm:space-x-4 sm:space-y-0">
+                    <div className="sm:w-1/3">
+                      <h2 className="text-md mb-1  font-bold leading-snug text-slate-800">
+                        주소
+                      </h2>
+                      <div className="text-lg">
+                      {complexInfo.address1}
+                      </div>
                     </div>
-                    <button className="btn border-slate-200 text-indigo-500 shadow-sm hover:border-slate-300">
-                      Change
-                    </button>
-                  </div> */}
+                    <div className="sm:w-1/3">
+                      <h2 className="text-md mb-1  font-bold leading-snug text-slate-800">
+                        상세 주소
+                      </h2>
+                      <div className="text-md">{complexInfo.address2}</div>
+                    </div>
+                  </div>
                 </section>
                 {/* Password */}
                 <section>
-                  <h2 className="mb-1 text-xl font-bold leading-snug text-slate-800">
+                  <h2 className="text-md mb-1 font-bold leading-snug text-slate-800">
                     미세먼지
                   </h2>
-                  <div className="text-lg">
-                    매우 좋음 (관측 지점 : 서울)
-                  </div>
+                  <div className="text-lg">매우 좋음 (관측 지점 : 서울)</div>
                   {/* <div className="mt-5">
                     <button className="btn border-slate-200 text-indigo-500 shadow-sm">
                       Set New Password

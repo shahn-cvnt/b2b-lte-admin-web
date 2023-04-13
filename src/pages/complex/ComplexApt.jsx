@@ -56,13 +56,6 @@ function ComplexApt() {
   return (
     <main className="sidebar-expanded bg-slate-100 font-inter text-slate-600 antialiased">
       <div className="mx-auto w-full max-w-9xl px-4 py-8 sm:px-6 lg:px-8">
-        {/* Page header */}
-        <div className="mb-8">
-          {/* Title */}
-          <h1 className="text-2xl font-bold text-slate-800 md:text-3xl">
-            {location.state.dong} 동
-          </h1>
-        </div>
         {/* Content */}
         <div className="mb-8 rounded-sm bg-white shadow-lg">
           <div className="flex flex-row md:-mr-px md:flex-row">

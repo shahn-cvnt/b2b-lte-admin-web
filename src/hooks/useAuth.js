@@ -3,21 +3,26 @@ import { useLocalStorage } from "./useLocalStroage";
 import { httpClient } from "../apis/httpClient";
 
 function useAuth() {
-  const [isInitialized, setIsInitialized] = useState(false);
   const [storedUser, setStoredUser] = useLocalStorage("cvnt_current_user");
   const [user, setUser] = useState(storedUser);
 
-  // set user
-  useEffect(() => {
-    if (!isInitialized && storedUser) {
+  // useEffect(() => {
+  //   // 초기화 시 로컬스토리지 정보가 있으면 자동로그인 요청
+  //   if (!isInitialized && storedUser) {
+  //     loginByToken(storedUser.id, storedUser.token);
+  //   }
+
+  //   setIsInitialized(true);
+  // }, [storedUser]);
+
+  // 초기화 시, 로컬스토리지 정보가 있으면 자동로그인 요청
+  useEffect(() => {    
+    if (storedUser && storedUser.id) {
       loginByToken(storedUser.id, storedUser.token);
-      setIsInitialized(true);
     }
+  }, [])
 
-    setUser(storedUser);
-  }, [storedUser]);
-
-  // set localstorage
+  // User 정보 변경 시, 로컬스토리지 값 세팅
   useEffect(() => {
     setStoredUser(user);
   }, [user]);

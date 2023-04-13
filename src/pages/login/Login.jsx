@@ -29,9 +29,8 @@ function Login() {
   const handleClickLogin = async () => {
     try {
       await login(loginInfo.userId, loginInfo.password);
-      // navigate("/device/status", { replace: true });
     } catch (e) {
-      // TODO: Error
+      console.error(e);
     }
   };
 
@@ -40,7 +39,13 @@ function Login() {
       <div className="flex h-full min-h-screen flex-col after:flex-1">
         <div className="mx-auto max-w-sm px-4 py-8">
           <h1 className="mb-6 text-3xl font-bold text-slate-800">로그인</h1>
-          <div className="space-y-4">
+          <form
+            className="space-y-4"
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleClickLogin();
+            }}
+          >
             <div>
               <label className="mb-1 block text-sm font-medium">아이디</label>
               <input
@@ -49,6 +54,7 @@ function Login() {
                 name="userId"
                 value={userId}
                 onChange={handleChange}
+                required
               />
             </div>
             <div>
@@ -66,17 +72,15 @@ function Login() {
                 name="password"
                 value={password}
                 onChange={handleChange}
+                required
               />
             </div>
-          </div>
-          <div className="mt-6 flex items-center justify-end">
-            <button
-              className="btn ml-3 bg-blue-500 text-white hover:bg-blue-600"
-              onClick={handleClickLogin}
-            >
-              로그인
-            </button>
-          </div>
+            <div className="mt-6 flex items-center justify-end">
+              <button className="btn ml-3 bg-blue-500 text-white hover:bg-blue-600">
+                로그인
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </main>
