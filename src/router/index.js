@@ -4,7 +4,7 @@ import Home from "../pages/home/Home";
 import Login from "../pages/login/Login";
 import DeviceStatus from "../pages/device/DeviceStatus";
 import ComplexInfo from "../pages/complex/ComplexInfo";
-import ComplexSetting from "../pages/complex/ComplexSetting";
+import ComplexSetting from "../pages/complex-setting/ComplexSetting";
 import EntranceGroup from "../pages/entrance_temp/EntranceGroup";
 import EntranceDevice from "../pages/entrance_temp/EntranceDevice";
 import EntranceHistory from "../pages/entrance_temp/EntranceHistory";
@@ -29,17 +29,17 @@ const childrenRoutes = [
   },
   {
     name: "사용자 관리",
-    path: "/complex",
+    path: "/community",
     role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
     children: [
       {
         name: "입주자 관리",
-        path: "struct",
+        path: "resident",
         element: <Home />,
       },
       {
         name: "방문자 관리",
-        path: "struct",
+        path: "visitor",
         element: <Home />,
       },
     ],
@@ -55,12 +55,12 @@ const childrenRoutes = [
       },
       {
         name: "동/세대 관리",
-        path: "donglist",
+        path: "apt_group",
         role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
-        element: <ComplexAptGroup />,
+        element: <ComplexAptGroup />
       },
       {
-        path: "donginfo",
+        path: "apt_group/apt",
         element: <ComplexApt />,
       },
       {
@@ -77,8 +77,8 @@ const childrenRoutes = [
     element: <DeviceStatus />,
     children: [
       {
-        name: "상태 정보",
-        path: "status",
+        name: "기기 모니터링",
+        path: "monitor",
         role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
         element: <DeviceStatus />,
       },
@@ -86,13 +86,13 @@ const childrenRoutes = [
         name: "펌웨어 등록",
         path: "firmware",
         role: USER_ROLE_PRIORITY.ROLE_ADMIN,
-        element: <DeviceStatus />,
+        element: <Home />,
       },
       {
         name: "기기 제어 로그",
-        path: "firmware",
+        path: "control_log",
         role: USER_ROLE_PRIORITY.ROLE_MAN_OFFICE,
-        element: <DeviceStatus />,
+        element: <Home />,
       },
     ],
   },
@@ -107,7 +107,7 @@ const childrenRoutes = [
       },
       {
         name: "출입 기기",
-        path: "device",
+        path: "entdevice",
         element: <EntranceDevice />,
       },
       {

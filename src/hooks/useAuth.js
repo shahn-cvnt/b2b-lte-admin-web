@@ -28,11 +28,15 @@ function useAuth() {
   }, [user]);
 
   const loginByToken = async (userId, token, complexId) => {
+    const isSuccess = true;
     try {
       const response = await httpClient("/api/v2/auth/nms/token_login", {
-        method: "get",
+        method: "post",
         headers: {
           Authorization: `Bearer ${token}`,
+        },
+        data: {
+          complexId: complexId
         }
       });
 
@@ -42,7 +46,7 @@ function useAuth() {
         let user = {
           id: userId,
           token: result.token || "test_token",
-          role: result.role || "",
+          role: result.role || ""
         };
 
         setUser(user);
@@ -52,7 +56,10 @@ function useAuth() {
     } catch (e) {
       console.error(e);
       setUser(null);
+      isSuccess = false;
     }
+
+    return isSuccess;
   };
 
   const login = async (userId, password) => {
@@ -87,7 +94,7 @@ function useAuth() {
     setUser(null);
   };
 
-  return { user, login, logout };
+  return { user, login, loginByToken, logout };
 }
 
 export { useAuth };

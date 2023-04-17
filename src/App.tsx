@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import {
-  Outlet,
-  Navigate,
-  useNavigate,
   RouterProvider
 } from "react-router-dom";
 import { AuthProvider } from "./hooks/useAuthContext";

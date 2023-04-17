@@ -1,19 +1,18 @@
 {
-  "token_login": {
-    "role" : "ROLE_ADMIN"
-  },
+  "token_login": {},
   "complex_info": {
-    "name": "문정 스마트빌 10차",
+    "name": "동탄역 유림 노르웨이 숲 아파트",
     "profile": "image",
     "postcode": "05855",
     "address1": "서울특별시 송파구 송파대로 155",
     "address2": "6층 씨브이네트",
+    "complexId": "CODE5",
     "finedust": "매우 나쁨"
   },
   "complex_list": [
     {
       "name": "동탄역 유림 노르웨이 숲 아파트",
-      "code": "CODE1"
+      "code": "CODE10"
     },
     {
       "name": "동탄역 유림 노르웨이 숲 오피스텔",
@@ -21,69 +20,98 @@
     },
     {
       "name": "대림 인천계양더프리미어",
-      "code": "CODE1"
+      "code": "CODE2"
     },
     {
       "name": "수원 하늘채 더퍼스트 1단지",
-      "code": "CODE1"
+      "code": "CODE3"
     },
     {
       "name": "수원 하늘채 더퍼스트 2단지",
-      "code": "CODE1"
+      "code": "CODE4"
     },
     {
       "name": "세종시 4-2 코오롱 하늘채센트레빌",
-      "code": "CODE1"
+      "code": "CODE5"
     },
     {
       "name": "언주역 노블루체",
-      "code": "CODE1"
+      "code": "CODE6"
     },
     {
       "name": "여의도 노블루체",
-      "code": "CODE1"
+      "code": "CODE7"
     },
     {
       "name": "전주 우아한시티",
-      "code": "CODE1"
+      "code": "CODE8"
     },
     {
       "name": "반포 래미안 퍼스티지",
-      "code": "CODE1"
+      "code": "CODE9"
     },
     {
       "name": "광주 수완 더벨류 디프리마",
-      "code": "CODE1"
+      "code": "CODE10"
     },
     {
       "name": "전남 영광 세진더이룸",
-      "code": "CODE1"
+      "code": "CODE11"
     },
     {
       "name": "중산매트로 하늘채",
-      "code": "CODE1"
+      "code": "CODE12"
     },
     {
       "name": "세종 한신더휴 리저브(6블럭)",
-      "code": "CODE1"
+      "code": "CODE13"
     },
     {
       "name": "세종 한신더휴 리저브(5블럭)",
-      "code": "CODE1"
+      "code": "CODE14"
     },
     {
       "name": "화순 삼일 파라뷰 에듀시티",
-      "code": "CODE1"
+      "code": "CODE15"
     },
     {
       "name": "더 헤븐 아일랜드 리조트",
-      "code": "CODE1"
+      "code": "CODE16"
     },
     {
       "name": "용평 아폴리스",
-      "code": "CODE1"
+      "code": "CODE17"
     }
   ],
+  "building_list": {
+    "buildingList": [
+      {
+        "dong": 101,
+        "cntTotalUnit": 41,
+        "cntActiveUnit": 39
+      },
+      {
+        "dong": 102,
+        "cntTotalUnit": 41,
+        "cntActiveUnit": 39
+      },
+      {
+        "dong": 103,
+        "cntTotalUnit": 41,
+        "cntActiveUnit": 39
+      },
+      {
+        "dong": 104,
+        "cntTotalUnit": 41,
+        "cntActiveUnit": 39
+      },
+      {
+        "dong": 105,
+        "cntTotalUnit": 41,
+        "cntActiveUnit": 39
+      }
+    ]
+  },
   "dong": {
     "list": [
       {
@@ -133,42 +161,274 @@
       }
     ]
   },
-  "dongdetail": [
+  "building_info": [
     {
       "id": 101,
       "floor": 20,
-      "ho": 4
+      "ho": 4,
+      "maxFloor": 20,
+      "maxLine": 4,
+      "lobbyFloor": 2,
+      "secOfficeId": "sec-office-sec-office",
+      "manOfficeId": "man-office-man-office",
+      "lineAccessList": [
+        [
+          "201-common",
+          "201-1/2-line"
+        ],
+        [
+          "201-common",
+          "201-1/2-line"
+        ]
+      ]
     },
     {
       "floor": 21,
       "ho": 4,
-      "id": 102
+      "id": 102,
+      "maxFloor": 20,
+      "maxLine": 4,
+      "lobbyFloor": 2,
+      "secOfficeId": "sec-office-sec-office",
+      "manOfficeId": "man-office-man-office",
+      "lineAccessList": [
+        [
+          "201-common",
+          "201-1/2-line"
+        ],
+        [
+          "201-common",
+          "201-1/2-line"
+        ]
+      ]
     },
     {
       "id": 103,
       "floor": 10,
-      "ho": 4
+      "ho": 4,
+      "maxFloor": 20,
+      "maxLine": 4,
+      "lobbyFloor": 2,
+      "secOfficeId": "sec-office-sec-office",
+      "manOfficeId": "man-office-man-office",
+      "lineAccessList": [
+        [
+          "201-common",
+          "201-1/2-line"
+        ],
+        [
+          "201-common",
+          "201-1/2-line"
+        ]
+      ]
     },
     {
       "id": 104,
       "floor": 8,
-      "ho": 4
+      "ho": 4,
+      "maxFloor": 20,
+      "maxLine": 4,
+      "lobbyFloor": 2,
+      "secOfficeId": "sec-office-sec-office",
+      "manOfficeId": "man-office-man-office",
+      "lineAccessList": [
+        [
+          "201-common",
+          "201-1/2-line"
+        ],
+        [
+          "201-common",
+          "201-1/2-line"
+        ]
+      ]
     },
     {
       "id": 105,
       "floor": 6,
-      "ho": 4
+      "ho": 4,
+      "maxFloor": 20,
+      "maxLine": 4,
+      "lobbyFloor": 2,
+      "secOfficeId": "sec-office-sec-office",
+      "manOfficeId": "man-office-man-office",
+      "lineAccessList": [
+        [
+          "201-common",
+          "201-1/2-line"
+        ],
+        [
+          "201-common",
+          "201-1/2-line"
+        ]
+      ]
     }
   ],
-  "hodetail": {
-    "id": 101,
-    "dong": 102,
-    "ho": 101,
-    "sip": "sip id",
-    "user_list": [
-      "user1",
-      "user2",
-      "user3"
+  "unit_list": {
+    "unitList": [
+      {
+        "id": 101,
+        "dong": 102,
+        "ho": 101,
+        "unitId": "unitId"
+      },
+      {
+        "id": 101,
+        "dong": 102,
+        "ho": 102,
+        "unitId": "unitId"
+      },
+      {
+        "id": 101,
+        "dong": 102,
+        "ho": 103,
+        "unitId": "unitId"
+      },
+      {
+        "id": 101,
+        "dong": 102,
+        "ho": 104,
+        "unitId": "unitId"
+      }
     ]
-  }
+  },
+  "unit_info": [
+    {
+      "id": 101,
+      "ho": 101,
+      "dong": 102,
+      "sipId": "10.10.10.10",
+      "familyId": "family id",
+      "userList": [
+        {
+          "id": "user1"
+        },
+        {
+          "id": "user2"
+        },
+        {
+          "id": "user3"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "ho": 102,
+      "dong": 102,
+      "sipId": "10.10.10.10",
+      "familyId": "family id",
+      "userList": [
+        {
+          "id": "user1"
+        },
+        {
+          "id": "user2"
+        },
+        {
+          "id": "user3"
+        }
+      ]
+    },
+    {
+      "id": 103
+    },
+    {
+      "id": 104
+    },
+    {
+      "id": 105
+    },
+    {
+      "id": 106
+    },
+    {
+      "id": 107
+    },
+    {
+      "id": 108
+    },
+    {
+      "id": 109
+    },
+    {
+      "id": 110
+    },
+    {
+      "id": 111
+    },
+    {
+      "id": 112
+    },
+    {
+      "id": 113
+    },
+    {
+      "id": 114
+    },
+    {
+      "id": 115
+    },
+    {
+      "id": 116
+    },
+    {
+      "id": 117
+    },
+    {
+      "id": 118
+    },
+    {
+      "id": 119
+    },
+    {
+      "id": 120
+    },
+    {
+      "id": 121
+    },
+    {
+      "id": 122
+    },
+    {
+      "id": 123
+    },
+    {
+      "id": 124
+    },
+    {
+      "id": 125
+    },
+    {
+      "id": 126
+    },
+    {
+      "id": 127
+    },
+    {
+      "id": 128
+    },
+    {
+      "id": 129
+    },
+    {
+      "id": 130
+    },
+    {
+      "id": 131
+    },
+    {
+      "id": 132
+    },
+    {
+      "id": 133
+    },
+    {
+      "id": 134
+    },
+    {
+      "id": 135
+    },
+    {
+      "id": 136
+    }
+  ]
 }

@@ -1,5 +1,7 @@
 {
-    "/api/v2/nms/complex/hodetail/:id": "/hodetail",
+    "/api/v2/nms/complex/unit/unit_list": "/unit_list",
+    "/api/v2/complex/unit/unit_list": "/unit_list",
+    "/api/v2/complex/unit/unit_info/*": "/unit_info/$1",
     "/api/v2/nms/complex/*": "/$1",
     "/api/v2/complex/*": "/$1",
     "/api/v2/auth/nms/token_login": "/token_login"

@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import SidebarLinkGroup from "./SidebarLinkGroup";
-import { useComplexInfo } from "../../hooks/useComplex";
 import { ReactComponent as SVGComplexNor } from "../../images/ic_complex_nor.svg";
 import { ReactComponent as SVGComplexSel } from "../../images/ic_complex_sel.svg";
 import { ReactComponent as SVGCommunityNor } from "../../images/ic_community_nor.svg";
@@ -13,9 +12,7 @@ import { ReactComponent as SVGEntranceSel } from "../../images/ic_entrance_sel.s
 import { ReactComponent as SVGTasksNor } from "../../images/ic_tasks_nor.svg";
 import { ReactComponent as SVGTasksSel } from "../../images/ic_tasks_sel.svg";
 
-function Sidebar({ menu, sidebarOpen, setSidebarOpen }) {
-
-  const { complexInfo } = useComplexInfo();
+function Sidebar({ logoTitle, menu, sidebarOpen, setSidebarOpen, handleClickSetting }) {
   const location = useLocation();
   const { pathname } = location;
 
@@ -27,33 +24,29 @@ function Sidebar({ menu, sidebarOpen, setSidebarOpen }) {
     storedSidebarExpanded === null ? false : storedSidebarExpanded === "true"
   );
 
-  const complex = {
-    name: "사용자 관리",
-    path: "/complex",
-    role: "admin",
-    children: [
-      {
-        name: "입주자 관리",
-        path: "struct",
-      },
-      {
-        name: "방문자 관리",
-        path: "struct",
-      },
-    ],
-  };
-
   const SideBarGroupIcon = ({ path }) => {
     if (path.includes("/complex")) {
-      return pathname.includes("/complex")? <SVGComplexSel /> : <SVGComplexNor />;
+      return pathname.includes("/complex") ? (
+        <SVGComplexSel />
+      ) : (
+        <SVGComplexNor />
+      );
     } else if (path.includes("/community")) {
-      return pathname.includes("/community")? <SVGCommunitySel /> : <SVGCommunityNor />;
+      return pathname.includes("/community") ? (
+        <SVGCommunitySel />
+      ) : (
+        <SVGCommunityNor />
+      );
     } else if (path.includes("/device")) {
-      return pathname.includes("/device")? <SVGDeviceSel /> : <SVGDeviceNor />;
+      return pathname.includes("/device") ? <SVGDeviceSel /> : <SVGDeviceNor />;
     } else if (path.includes("/entrance")) {
-      return pathname.includes("/entrance")? <SVGEntranceSel /> : <SVGEntranceNor />;
+      return pathname.includes("/entrance") ? (
+        <SVGEntranceSel />
+      ) : (
+        <SVGEntranceNor />
+      );
     } else if (path.includes("/call")) {
-      return pathname.includes("/call")? <SVGTasksSel /> : <SVGTasksNor />;
+      return pathname.includes("/call") ? <SVGTasksSel /> : <SVGTasksNor />;
     }
   };
 
@@ -131,7 +124,7 @@ function Sidebar({ menu, sidebarOpen, setSidebarOpen }) {
           </button>
           {/* Logo */}
           <NavLink end to="/" className="flex">
-            <svg width="32" height="32" viewBox="0 0 32 32">
+            {/* <svg width="32" height="32" viewBox="0 0 32 32">
               <defs>
                 <linearGradient
                   x1="28.538%"
@@ -167,11 +160,22 @@ function Sidebar({ menu, sidebarOpen, setSidebarOpen }) {
                 d="M2.223 24.14L29.777 7.86A15.926 15.926 0 0132 16c0 8.837-7.163 16-16 16-5.864 0-10.991-3.154-13.777-7.86z"
                 fill="url(#logo-b)"
               />
-            </svg>
-            <span className="ml-3 whitespace-nowrap text-lg font-semibold text-slate-200 duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-              {complexInfo?.name}
+            </svg> */}
+            <span className="ml-3 whitespace-break-spaces pt-1 text-lg font-semibold text-slate-200 duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
+              {logoTitle}
             </span>
           </NavLink>
+          {/* Setting */}
+          <button className="btn-xs ml-2 pt-1" onClick={(e) => {
+            e.stopPropagation();
+            handleClickSetting();
+          }}>
+          <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-settings hover:text-slate-200" width="24" height="24" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#e2e8f0" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+          </button>
         </div>
 
         {/* Links */}
@@ -190,105 +194,6 @@ function Sidebar({ menu, sidebarOpen, setSidebarOpen }) {
               </span>
             </h3>
             <ul className="mt-3">
-              {/* Dashboard */}
-              <SidebarLinkGroup
-                activecondition={
-                  pathname === "/" || pathname.includes("dashboard")
-                }
-              >
-                {(handleClick, open) => {
-                  return (
-                    <React.Fragment>
-                      <a
-                        href="#0"
-                        className={`block truncate text-slate-200 transition duration-150 ${
-                          pathname === "/" || pathname.includes("dashboard")
-                            ? "hover:text-slate-200"
-                            : "hover:text-white"
-                        }`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          sidebarExpanded
-                            ? handleClick()
-                            : setSidebarExpanded(true);
-                        }}
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center">
-                            <svg
-                              className="h-6 w-6 shrink-0"
-                              viewBox="0 0 24 24"
-                            >
-                              <path
-                                className={`fill-current ${
-                                  pathname === "/" ||
-                                  pathname.includes("dashboard")
-                                    ? "text-indigo-500"
-                                    : "text-slate-400"
-                                }`}
-                                d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"
-                              />
-                              <path
-                                className={`fill-current ${
-                                  pathname === "/" ||
-                                  pathname.includes("dashboard")
-                                    ? "text-indigo-600"
-                                    : "text-slate-600"
-                                }`}
-                                d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"
-                              />
-                              <path
-                                className={`fill-current ${
-                                  pathname === "/" ||
-                                  pathname.includes("dashboard")
-                                    ? "text-indigo-200"
-                                    : "text-slate-400"
-                                }`}
-                                d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
-                              />
-                            </svg>
-                            <span className="ml-3 text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                              Dashboard
-                            </span>
-                          </div>
-                          {/* Icon */}
-                          <div className="ml-2 flex shrink-0">
-                            <svg
-                              className={`ml-1 h-3 w-3 shrink-0 fill-current text-slate-400 ${
-                                open && "rotate-180"
-                              }`}
-                              viewBox="0 0 12 12"
-                            >
-                              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-                            </svg>
-                          </div>
-                        </div>
-                      </a>
-                      <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
-                        <ul className={`mt-1 pl-9 ${!open && "hidden"}`}>
-                          <li className="mb-1 last:mb-0">
-                            <NavLink
-                              end
-                              to="/"
-                              className={({ isActive }) =>
-                                "block truncate transition duration-150 " +
-                                (isActive
-                                  ? "text-indigo-500"
-                                  : "text-slate-400 hover:text-slate-200")
-                              }
-                            >
-                              <span className="text-sm font-medium duration-200 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100">
-                                Main
-                              </span>
-                            </NavLink>
-                          </li>
-                        </ul>
-                      </div>
-                    </React.Fragment>
-                  );
-                }}
-              </SidebarLinkGroup>
-              {/* 단지 관리 */}
               {menu.map((e, index) => {
                 return (
                   <SidebarLinkGroup
